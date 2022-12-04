@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django posts</title>
+</head>
+<body>
+    {% block content%}
+    <nav class="navbar">
+        <ul>
+            <li class="navbar-logo">Gallery</li>
+            <li class="navbar-toggle"><i class="material-icons">traffic</i></li>
+            <li class="links"><a href="/"></a>Home</li>
+            <li class="links"><a href="/"></a>Contact</li>
+            <li class="links"><a href="/"></a>Login</li>
+            <li class="links"><a href="/"></a>Sign up</li>
+        </ul>
+    </nav>
+    <center><h1>Postlar</h1></center>
+    {% for post in posts %}
+    <center><div class="container" style="padding: 20px 20px;background-color: chartreuse;margin-bottom: 30px;width: fit-content;border-radius: 20px;">
+    <a href="{{post.image.url}}"><img src="{{post.image.url}}" alt="" style="width: 400px;height:240px;"></a>
+    <h1>{{post.name}}</h1>
+    </div>
+    </center>
+    {% endfor %}
+    {% endblock content%}
+    <script>
+        const toggleButton = document.getElementsByClassName('navbar-toggle')[0];
+        const links = document.getElementsByClassName('links');
+        toggleButton.addEventListener('click',function(){
+    for(var i=0;i<links.length;i++){
+        links[i].classList.toggle('korsat');
+    }
+})
+
+    </script>
+</body>
+</html>
